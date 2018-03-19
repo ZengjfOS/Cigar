@@ -36,6 +36,7 @@ class Configures(object):
             cls.localConfig.debug = config.getboolean(localTag, "Debug")
             cls.localConfig.scanUart = config.get(localTag, "ScanUart")
             cls.localConfig.scanBaudrate = config.get(localTag, "ScanBaudrate")
+            cls.localConfig.heartbeat = config.get(localTag, "Heartbeat")
 
             # 设置log等级
             infoLevel = DEBUG
@@ -66,6 +67,7 @@ class Configures(object):
             debug("[Local configure data]:")
             debug("\tlocal ScanUart: %s" % cls.localConfig.scanUart)
             debug("\tlocal ScanBaudrate: %s" % cls.localConfig.scanBaudrate)
+            debug("\tlocal Heartbeat: %s" % cls.localConfig.heartbeat)
 
         return cls._inst
 

@@ -12,6 +12,11 @@ import os
 class GPIO(object):
 
     @staticmethod
+    def initGPIOOut(pinNumber, value):
+        GPIOCtrl.requestGpio(pinNumber)
+        GPIOCtrl.setOutValue(pinNumber, value)
+
+    @staticmethod
     def getValue(pinNumber):
 
         GPIOCtrl.requestGpio(pinNumber)
@@ -29,12 +34,13 @@ class GPIO(object):
     @staticmethod
     def setValue(pinNumber, value):
 
-        GPIOCtrl.requestGpio(pinNumber)
+        # GPIOCtrl.requestGpio(pinNumber)
 
-        GPIOCtrl.setOut(pinNumber)
+        # GPIOCtrl.setOut(pinNumber)
         GPIOCtrl.setValue(pinNumber, value)
+        # GPIOCtrl.setOutValue(pinNumber, value)
 
-        GPIOCtrl.freeGpio(pinNumber)
+        # GPIOCtrl.freeGpio(pinNumber)
 
     @staticmethod
     def irq(pinNumber, edgeType):

@@ -27,3 +27,11 @@ class LocalConfig(object):
     @scanBaudrate.setter
     def scanBaudrate(self, scanBaudrate):
         self._scanBaudrate = scanBaudrate
+
+    @property
+    def heartbeat(self):
+        return self._heartbeat
+
+    @heartbeat.setter
+    def heartbeat(self, heartbeat):
+        self._heartbeat = heartbeat

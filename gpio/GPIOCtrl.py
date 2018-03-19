@@ -59,6 +59,15 @@ class GPIOCtrl(object):
         ShellCmd.execute(cmd)
 
     @staticmethod
+    def setOutValue(pinNumber, value):
+        if value == 0:
+            cmd = "echo low > " + GPIOCtrl.directionPath(pinNumber)
+            ShellCmd.execute(cmd)
+        else :
+            cmd = "echo high > " + GPIOCtrl.directionPath(pinNumber)
+            ShellCmd.execute(cmd)
+
+    @staticmethod
     def getValue(pinNumber):
         cmd = "cat " + GPIOCtrl.valuePath(pinNumber)
         return ShellCmd.execute(cmd)[0].strip('\n')
