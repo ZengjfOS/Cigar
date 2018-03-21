@@ -35,3 +35,11 @@ class LocalConfig(object):
     @heartbeat.setter
     def heartbeat(self, heartbeat):
         self._heartbeat = heartbeat
+
+    @property
+    def pindefvalue(self):
+        return self._pindefvalue
+
+    @pindefvalue.setter
+    def pindefvalue(self, pindefvalue):
+        self._pindefvalue = pindefvalue

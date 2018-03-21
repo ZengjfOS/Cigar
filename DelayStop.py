@@ -21,8 +21,8 @@ class DelayStop(threading.Thread):
         DelayStop.stopCountFlag = DelayStop.stopCountFlag + 1
         DelayStop.mutex.release()
 
-        GPIO.setValue(relayR, 0)
-        GPIO.setValue(relayStop, 0)
+        GPIO.setValue(relayR, 0 if configures.localConfig.pindefvalue > 0 else 1)
+        GPIO.setValue(relayStop, 0 if configures.localConfig.pindefvalue > 0 else 1)
         time.sleep(1.9)
 
         DelayStop.mutex.acquire()
@@ -30,6 +30,6 @@ class DelayStop(threading.Thread):
         DelayStop.mutex.release()
 
         if (DelayStop.stopCountFlag == 0):
-            GPIO.setValue(relayR, 1)
-            GPIO.setValue(relayStop, 1)
+            GPIO.setValue(relayR, configures.localConfig.pindefvalue)
+            GPIO.setValue(relayStop, configures.localConfig.pindefvalue)
 

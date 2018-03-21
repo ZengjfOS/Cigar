@@ -56,8 +56,8 @@ def main(argv):
 
     relayR = 15
     relayStop = 12
-    GPIO.initGPIOOut(relayR, 1)
-    GPIO.initGPIOOut(relayStop, 1)
+    GPIO.initGPIOOut(relayR, configures.localConfig.pindefvalue)
+    GPIO.initGPIOOut(relayStop, configures.localConfig.pindefvalue)
 
     network = Network()
     network.start()
@@ -76,8 +76,8 @@ def main(argv):
         if (re.search(r"\d{32}\r\n", data.decode()) != None) or (re.search(r"NoRead\r\n", data.decode()) != None):
 
             # 复位控制信号
-            GPIO.setValue(relayR, 1)
-            GPIO.setValue(relayStop, 1)
+            GPIO.setValue(relayR, configures.localConfig.pindefvalue)
+            GPIO.setValue(relayStop, configures.localConfig.pindefvalue)
             realData = data.decode().replace('\r\n', '')
 
             if Recv.running == True:

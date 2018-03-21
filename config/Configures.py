@@ -37,6 +37,7 @@ class Configures(object):
             cls.localConfig.scanUart = config.get(localTag, "ScanUart")
             cls.localConfig.scanBaudrate = config.get(localTag, "ScanBaudrate")
             cls.localConfig.heartbeat = config.get(localTag, "Heartbeat")
+            cls.localConfig.pindefvalue = config.getint(localTag, "PinDefValue")
 
             # 设置log等级
             infoLevel = DEBUG
