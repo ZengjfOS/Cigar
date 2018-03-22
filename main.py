@@ -89,7 +89,7 @@ def main(argv):
 
             if len(data) == 34:
                 # 3-8位是产品代码，17-22位是生产日期，041204， 代表2004-12-04
-                if (len(Recv.productCode) == 0 or realData[2:8] == Recv.productCode) and ((datetime.date(int("20" + realData[16:18]), int(realData[18:20]), int(realData[20:22])) -  Recv.checkDate).days > 0) :
+                if (len(Recv.productCode) == 0 or (True if "999999" == Recv.productCode else realData[2:8] == Recv.productCode)) and ((datetime.date(int("20" + realData[16:18]), int(realData[18:20]), int(realData[20:22])) -  Recv.checkDate).days > 0) :
                     serialOut.write(bytes(realData, encoding="utf8"))
                 else:
                     DelayStop.DelayStop().start()

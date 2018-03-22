@@ -72,7 +72,7 @@ class Network(threading.Thread):
 
                                 if len(self.data) == 32:
                                     # 3-8位是产品代码，17-22位是生产日期，041204， 代表2004-12-04
-                                    if (self.data[2:8] == Recv.productCode) and ((datetime.date(int("20" + self.data[16:18]), int(self.data[18:20]), int(self.data[20:22])) -  Recv.checkDate).days > 0) :
+                                    if (True if "999999" == Recv.productCode else self.data[2:8] == Recv.productCode) and ((datetime.date(int("20" + self.data[16:18]), int(self.data[18:20]), int(self.data[20:22])) -  Recv.checkDate).days > 0) :
                                         count = connection.send(bytes("T1C103" + "%04d" % len(self.data) + self.data + "1\r\n", encoding="utf8"))
                                     else:
                                         count = connection.send(bytes("T1C103" + "%04d" % len(self.data) + self.data + "0\r\n", encoding="utf8"))
