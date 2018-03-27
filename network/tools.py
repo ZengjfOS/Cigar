@@ -9,7 +9,7 @@ import fcntl
 import struct
 
 def ping(ip):
-    if os.system("ping -c 1 " + ip + " > /dev/null") == 0:
+    if os.system("ping -c 1 " + ip + " > /dev/null 2>&1") == 0:
         return True
     else:
         logging.error("ping fault.")
