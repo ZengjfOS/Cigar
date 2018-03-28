@@ -27,3 +27,11 @@ class LocalConfig(object):
     @scanBaudrate.setter
     def scanBaudrate(self, scanBaudrate):
         self._scanBaudrate = scanBaudrate
+
+    @property
+    def pindefvalue(self):
+        return self._pindefvalue
+
+    @pindefvalue.setter
+    def pindefvalue(self, pindefvalue):
+        self._pindefvalue = pindefvalue

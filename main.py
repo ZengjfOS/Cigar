@@ -80,11 +80,7 @@ def main(argv):
 
             if (re.search(r"NoRead\r\n", data.decode()) != None) and (len(data) == 8):
 
-                GPIO.setValue(relayR, 0)
-                GPIO.setValue(relayStop, 0)
-
                 DelayStop().start()
-
                 logging.debug(realData)
 
             if (re.search(r"\d{32}\r\n", data.decode()) != None) and (len(data) == 34):

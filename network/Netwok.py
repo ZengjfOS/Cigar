@@ -5,6 +5,7 @@ from network.tools import *
 from config.Configures import configures
 import threading
 from gpio.GPIO import GPIO
+from DelayStop import DelayStop
 
 class Network(threading.Thread):
 
@@ -45,15 +46,11 @@ class Network(threading.Thread):
             self.disconnect()
 
             if ret == 1:
-                GPIO.setValue(relayR, 0)
-                GPIO.setValue(relayStop, 0)
-                time.sleep(2)
-                GPIO.setValue(relayR, 1)
-                GPIO.setValue(relayStop, 1)
+                DelayStop().start()
 
             if ret == 0:
-                GPIO.setValue(relayR, 1)
-                GPIO.setValue(relayStop, 1)
+                GPIO.setValue(relayR, configures.pindefvalue)
+                GPIO.setValue(relayStop, configures.pindefvalue)
 
                 if (len(self.data) == 32) :
                     self.serial.write(bytes(self.data, encoding = "utf8"))
@@ -67,15 +64,11 @@ class Network(threading.Thread):
                 self.disconnect()
 
                 if ret == 1:
-                    GPIO.setValue(relayR, 0)
-                    GPIO.setValue(relayStop, 0)
-                    time.sleep(2)
-                    GPIO.setValue(relayR, 1)
-                    GPIO.setValue(relayStop, 1)
+                    DelayStop().start()
 
                 if ret == 0:
-                    GPIO.setValue(relayR, 1)
-                    GPIO.setValue(relayStop, 1)
+                    GPIO.setValue(relayR, configures.pindefvalue)
+                    GPIO.setValue(relayStop, configures.pindefvalue)
 
                     if (len(self.data) == 32) :
                         self.serial.write(bytes(self.data, encoding = "utf8"))
