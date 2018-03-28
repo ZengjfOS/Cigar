@@ -49,8 +49,8 @@ class Network(threading.Thread):
                 DelayStop().start()
 
             if ret == 0:
-                GPIO.setValue(relayR, configures.pindefvalue)
-                GPIO.setValue(relayStop, configures.pindefvalue)
+                GPIO.setValue(relayR, configures.localConfig.pindefvalue)
+                GPIO.setValue(relayStop, configures.localConfig.pindefvalue)
 
                 if (len(self.data) == 32) :
                     self.serial.write(bytes(self.data, encoding = "utf8"))
@@ -67,8 +67,8 @@ class Network(threading.Thread):
                     DelayStop().start()
 
                 if ret == 0:
-                    GPIO.setValue(relayR, configures.pindefvalue)
-                    GPIO.setValue(relayStop, configures.pindefvalue)
+                    GPIO.setValue(relayR, configures.localConfig.pindefvalue)
+                    GPIO.setValue(relayStop, configures.localConfig.pindefvalue)
 
                     if (len(self.data) == 32) :
                         self.serial.write(bytes(self.data, encoding = "utf8"))
