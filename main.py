@@ -54,8 +54,8 @@ def main(argv):
     relayR = 15
     relayStop = 12
 
-    GPIO.initGPIOOut(12, 1)
-    GPIO.initGPIOOut(15, 1)
+    GPIO.initGPIOOut(12, configures.pindefvalue)
+    GPIO.initGPIOOut(15, configures.pindefvalue)
 
     while 1 :
 
@@ -67,8 +67,8 @@ def main(argv):
         if ((re.search(r"NoRead\r\n", data.decode()) != None) and (len(data) == 8)) or ((re.search(r"\d{32}\r\n", data.decode()) != None) and (len(data) == 34)):
 
             # 复位控制信号
-            GPIO.setValue(relayR, 1)
-            GPIO.setValue(relayStop, 1)
+            GPIO.setValue(relayR, configures.pindefvalue)
+            GPIO.setValue(relayStop, configures.pindefvalue)
 
             realData = data.decode().replace('\r\n', '')
 
