@@ -9,3 +9,8 @@
 ## 系统烧录工具
 
 https://github.com/ZengjfOS/MfgTool
+
+## 测试字符串
+
+* `91045408125301041610140555555555`
+* `NoRead`
